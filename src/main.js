@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import "babel-polyfill";
 import VueRouter from 'vue-router'
 import App from './App.vue'
 import axios from 'axios'
@@ -18,9 +19,25 @@ const router = new VueRouter({
   linkActiveClass: 'nav-item active'
 })
 
+axios.defaults.baseURL = 'https://troove-168621.firebaseio.com/'
+// axios.defaults.headers.common['Authorization'] = 'fasfdsa'
+axios.defaults.headers.get['Accepts'] = 'application/json'
+
+const reqInterceptor = axios.interceptors.request.use(config => {
+  console.log('Request Interceptor', config)
+  return config
+})
+const resInterceptor = axios.interceptors.response.use(res => {
+  console.log('Response Interceptor', res)
+  return res
+})
+
+axios.interceptors.request.eject(reqInterceptor)
+axios.interceptors.response.eject(resInterceptor)
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   render: h => h(App),
-  router
+  router,
 })

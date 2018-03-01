@@ -60,6 +60,9 @@
 <script>
   export default {
     computed: {
+         auth () {
+        return this.$store.getters.isAuthenticated
+      },
       routeName () {
         const {name} = this.$route
         return this.capitalizeFirstLetter(name)
@@ -71,6 +74,9 @@
       }
     },
     methods: {
+        onLogout() {
+        this.$store.dispatch('logout')
+      },
       capitalizeFirstLetter (string) {
         return string.charAt(0).toUpperCase() + string.slice(1)
       },
