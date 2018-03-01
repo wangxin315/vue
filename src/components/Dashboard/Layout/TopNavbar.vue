@@ -39,27 +39,20 @@
             </a>
           </li>
         </ul>
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              Account
-            </a>
-          </li>
-          <drop-down title="Dropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something</a>
-            <div class="divider"></div>
-            <a class="dropdown-item" href="#">Separated link</a>
-          </drop-down>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              Log out
-            </a>
-          </li>
-        </ul>
+        <ul>
+        <li v-if="!auth">
+          <router-link to="/signup">Sign Up</router-link>
+        </li>
+        <li v-if="!auth">
+          <router-link to="/signin">Sign In</router-link>
+        </li>
+        <li v-if="auth">
+          <router-link to="/dashboard">Dashboard</router-link>
+        </li>
+        <li v-if="auth">
+          <button @click="onLogout" class="logout">Logout</button>
+        </li>
+      </ul>
       </div>
     </div>
   </nav>
