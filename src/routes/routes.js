@@ -3,6 +3,8 @@ import DashboardLayout from '../components/Dashboard/Layout/DashboardLayout.vue'
 import NotFound from '../components/GeneralViews/NotFoundPage.vue'
 //login
 import LoginHome from 'src/components/LoginModule/LoginHome.vue'
+import signin from 'src/components/LoginModule/signin.vue'
+import signup from 'src/components/LoginModule/signup.vue'
 
 // Admin pages
 import Overview from 'src/components/Dashboard/Views/Overview.vue'
@@ -33,6 +35,16 @@ const routes = [
         path: 'loginhome',
         name: 'LoginHome',
         component: LoginHome
+      },
+      {
+        path: 'signup',
+        name: 'signup',
+        component: signup
+      },
+      {
+        path: 'signin',
+        name: 'signin',
+        component: signin
       },
       {
         path: 'user',
