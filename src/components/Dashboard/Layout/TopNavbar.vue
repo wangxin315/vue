@@ -41,13 +41,13 @@
         </ul>
         <ul>
         <li v-if="!auth">
-          <router-link to="/signup">Sign Up</router-link>
+          <router-link to="/admin/signup">Sign Up</router-link>
         </li>
         <li v-if="!auth">
-          <router-link to="/signin">Sign In</router-link>
+          <router-link to="/admin/signin">Sign In</router-link>
         </li>
         <li v-if="auth">
-          <router-link to="/dashboard">Dashboard</router-link>
+          <router-link to="/admin/loginhome">Dashboard</router-link>
         </li>
         <li v-if="auth">
           <button @click="onLogout" class="logout">Logout</button>
@@ -58,6 +58,8 @@
   </nav>
 </template>
 <script>
+
+
   export default {
     computed: {
          auth () {

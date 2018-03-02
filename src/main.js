@@ -3,6 +3,7 @@ import "babel-polyfill";
 import VueRouter from 'vue-router'
 import App from './App.vue'
 import axios from 'axios'
+import store from './store/store'
 
 // LightBootstrap plugin
 import LightBootstrap from './light-bootstrap-main'
@@ -38,6 +39,7 @@ axios.interceptors.response.eject(resInterceptor)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  render: h => h(App),
   router,
+  render: h => h(App),
+  store
 })

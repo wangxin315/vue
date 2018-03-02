@@ -1,5 +1,5 @@
 /* eslint-disable */
-import axios from './axios-auth'
+import axios from '../..//axios-auth'
 import globalAxios from 'axios'
 
 const state = {
