@@ -13,9 +13,16 @@
 </template>
 <script>
    import axios from 'axios';
+   
   export default {
-  
-  }
+    email () {
+        return !this.$store.getters.user ? false : this.$store.getters.user.email
+     console.log(email) },
+    
+    created () {
+      this.$store.dispatch('fetchUser')
+    }
+    }
 </script>
 <style>
 

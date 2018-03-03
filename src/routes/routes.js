@@ -15,6 +15,7 @@ import Icons from 'src/components/Dashboard/Views/Icons.vue'
 import Maps from 'src/components/Dashboard/Views/Maps.vue'
 import Notifications from 'src/components/Dashboard/Views/Notifications.vue'
 
+import store from '../store/store'
 const routes = [
   {
     path: '/',
@@ -32,9 +33,22 @@ const routes = [
         component: Overview
       },
       {
-        path: 'loginhome',
+        path: '/admin/loginhome',
         name: 'LoginHome',
-        component: LoginHome
+        component: LoginHome,
+         beforeEnter: (to, from, next) => {
+          alert('This area is for authorised users only, please login to continue.');
+          if (store.state.idToken) {
+            next({
+              path: '/admin/loginhome',
+              
+            })
+          } else {
+            next({
+              path: '/admin/signin'              
+            })
+          } 
+        }
       },
       {
         path: 'signup',

@@ -1,6 +1,10 @@
 /* eslint-disable */
-import axios from '../..//axios-auth'
+import Vue from 'vue'
+import Vuex from 'vuex'
+import axios from '../../axios-auth'
 import globalAxios from 'axios'
+
+Vue.use(Vuex)
 
 const state = {
     idToken: null,
@@ -19,15 +23,6 @@ const mutations = {
   clearAuthData (state) {
     state.idToken = null
     state.userId = null
-  }
-};
-
-const getters = {
-  user (state) {
-    return state.user
-  },
-  isAuthenticated (state) {
-    return state.idToken !== null
   }
 };
 
@@ -129,6 +124,15 @@ const actions = {
         commit('storeUser', users[0])
       })
       .catch(error => console.log(error))
+  }
+};
+
+const getters = {
+  user (state) {
+    return state.user
+  },
+  isAuthenticated (state) {
+    return state.idToken !== null
   }
 };
 
