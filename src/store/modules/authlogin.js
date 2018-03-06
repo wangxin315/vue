@@ -3,36 +3,40 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from '../../axios-auth'
 import globalAxios from 'axios'
+import routes from '../../routes/routes'
+import VueRouter from 'vue-router';
 
 Vue.use(Vuex)
 
+const router = new VueRouter({routes, linkActiveClass: 'nav-item active'});
+
 const state = {
-    idToken: null,
-    userId: null,
-    user: null
+  idToken: null,
+  userId: null,
+  user: null
 };
 
 const mutations = {
-  authUser (state, userData) {
+  authUser(state, userData) {
     state.idToken = userData.token
     state.userId = userData.userId
   },
-  storeUser (state, user) {
+  storeUser(state, user) {
     state.user = user
   },
-  clearAuthData (state) {
+  clearAuthData(state) {
     state.idToken = null
     state.userId = null
   }
 };
 
 const actions = {
-  setLogoutTimer ({commit}, expirationTime) {
+  setLogoutTimer({ commit }, expirationTime) {
     setTimeout(() => {
       commit('clearAuthData')
     }, expirationTime * 1000)
   },
-  signup ({commit, dispatch}, authData) {
+  signup({ commit, dispatch }, authData) {
     axios.post('/signupNewUser?key=AIzaSyBvOXNbRQQUaXrhcTOhnjLg14SwX0geqL8', {
       email: authData.email,
       password: authData.password,
@@ -54,7 +58,7 @@ const actions = {
       })
       .catch(error => console.log(error))
   },
-  login ({commit, dispatch}, authData) {
+  login({ commit, dispatch }, authData) {
     axios.post('/verifyPassword?key=AIzaSyBvOXNbRQQUaXrhcTOhnjLg14SwX0geqL8', {
       email: authData.email,
       password: authData.password,
@@ -72,10 +76,12 @@ const actions = {
           userId: res.data.localId
         })
         dispatch('setLogoutTimer', res.data.expiresIn)
+        // router.push('/admin/user');
+        window.location.href = '#/admin/user';
       })
       .catch(error => console.log(error))
   },
-  tryAutoLogin ({commit}) {
+  tryAutoLogin({ commit }) {
     const token = localStorage.getItem('token')
     if (!token) {
       return
@@ -91,14 +97,14 @@ const actions = {
       userId: userId
     })
   },
-  logout ({commit}) {
+  logout({ commit }) {
     commit('clearAuthData')
     localStorage.removeItem('expirationDate')
     localStorage.removeItem('token')
     localStorage.removeItem('userId')
-    router.replace('/signin')
+    window.location.href = '#/admin/signin';
   },
-  storeUser ({commit, state}, userData) {
+  storeUser({ commit, state }, userData) {
     if (!state.idToken) {
       return
     }
@@ -106,7 +112,7 @@ const actions = {
       .then(res => console.log(res))
       .catch(error => console.log(error))
   },
-  fetchUser ({commit, state}) {
+  fetchUser({ commit, state }) {
     if (!state.idToken) {
       return
     }
@@ -128,10 +134,10 @@ const actions = {
 };
 
 const getters = {
-  user (state) {
+  user(state) {
     return state.user
   },
-  isAuthenticated (state) {
+  isAuthenticated(state) {
     return state.idToken !== null
   }
 };
@@ -142,3 +148,4 @@ export default {
   getters,
   actions
 };
+

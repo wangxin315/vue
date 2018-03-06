@@ -1,6 +1,26 @@
 <template>
   <div id="signin">
     <div class="signin-form">
+      <div><h1>Signup</h1>
+<p>Login with Google or your mobile phone.
+</p>
+<div class="row">
+    <div class="col">
+     <input id="image" type="image" alt="Login" width="180"
+    src="../../../static/img/btn_google_signin_light_pressed_web@2x.png" 
+    >
+    </div>
+    <div class="col">
+     <button type="button" class="btn btn-primary btn-sm">Mobile Phone Signup</button>
+    </div>
+  
+    
+</div>
+<br>
+<hr>
+<p>Or use your email and password</p>
+</div>
+
       <form @submit.prevent="onSubmit">
         <div class="input">
           <label for="email">Mail</label>

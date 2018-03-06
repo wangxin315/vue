@@ -1,20 +1,48 @@
 <template>
   <div id="signup">
     <div class="signup-form">
+<div><h1>Signup</h1>
+<p>Signup with Google or your mobile phone.
+</p>
+<div class="row">
+    <div class="col">
+     <input id="image" type="image" alt="Login" width="180"
+    src="../../../static/img/btn_google_signin_light_pressed_web@2x.png" 
+    >
+    </div>
+    <div class="col">
+     <button type="button" class="btn btn-primary btn-sm">Mobile Phone Signup</button>
+    </div>
+  
+    
+</div>
+<br>
+<hr>
+<p>Or create a account</p>
+</div>
+
+
+    
       <form @submit.prevent="onSubmit">
         <div class="input">
-          <label for="email">Mail</label>
+          <label for="email">E-Mail</label>
           <input
                   type="email"
                   id="email"
                   v-model="email">
         </div>
         <div class="input">
-          <label for="age">Your Age</label>
+          <label for="firstName">First Name</label>
           <input
-                  type="number"
-                  id="age"
-                  v-model.number="age">
+                  type="text"
+                  id="firstName"
+                  v-model.number="firstName">
+
+                   <label for="lastName">Last Name</label>
+          <input
+                  type="text"
+                  id="lastName"
+                  v-model.number="lastName">
         </div>
         <div class="input">
           <label for="password">Password</label>
@@ -30,31 +58,47 @@
                   id="confirm-password"
                   v-model="confirmPassword">
         </div>
-        <div class="input">
-          <label for="country">Country</label>
-          <select id="country" v-model="country">
-            <option value="usa">USA</option>
-            <option value="india">India</option>
-            <option value="uk">UK</option>
-            <option value="germany">Germany</option>
-          </select>
+          <div class="input">
+          <label for="phone">Phone Number</label>
+          <input
+                  type="text"
+                  id="phone"
+                  v-model="phone">
         </div>
-        <div class="hobbies">
-          <h3>Add some Hobbies</h3>
-          <button @click="onAddHobby" type="button">Add Hobby</button>
-          <div class="hobby-list">
-            <div
-                    class="input"
-                    v-for="(hobbyInput, index) in hobbyInputs"
-                    :key="hobbyInput.id">
-              <label :for="hobbyInput.id">Hobby #{{ index }}</label>
-              <input
-                      type="text"
-                      :id="hobbyInput.id"
-                      v-model="hobbyInput.value">
-              <button @click="onDeleteHobby(hobbyInput.id)" type="button">X</button>
-            </div>
-          </div>
+        <div class="input">
+          <label for="company">Company</label>
+          <input
+                  type="text"
+                  id="company"
+                  v-model="company">
+        </div>
+         <div class="input">
+          <label for="address">Address</label>
+          <input
+                  type="text"
+                  id="address"
+                  v-model="address">
+        </div>
+         <div class="input">
+          <label for="city">City</label>
+          <input
+                  type="text"
+                  id="city"
+                  v-model="city">
+        </div>
+         <div class="input">
+          <label for="country">Country</label>
+          <input
+                  type="text"
+                  id="country"
+                  v-model="country">
+        </div>
+           <div class="input">
+          <label for="postalCode">Postal Code</label>
+          <input
+                  type="text"
+                  id="cipostalCodety"
+                  v-model="postalCode">
         </div>
         <div class="input inline">
           <input type="checkbox" id="terms" v-model="terms">
@@ -73,33 +117,33 @@
     data () {
       return {
         email: '',
-        age: null,
+        firstName: '',
+        lastName: '',
         password: '',
         confirmPassword: '',
-        country: 'usa',
-        hobbyInputs: [],
+        phone: '',
+         company: '',
+          address: '',
+          city: '',
+          country: '',
+          postalCode: '',
         terms: false
       }
     },
     methods: {
-      onAddHobby () {
-        const newHobby = {
-          id: Math.random() * Math.random() * 1000,
-          value: ''
-        }
-        this.hobbyInputs.push(newHobby)
-      },
-      onDeleteHobby (id) {
-        this.hobbyInputs = this.hobbyInputs.filter(hobby => hobby.id !== id)
-      },
       onSubmit () {
         const formData = {
           email: this.email,
-          age: this.age,
+          firstName: this.firstName,
+          lastName: this.lastName,
           password: this.password,
           confirmPassword: this.confirmPassword,
+          phone: this.phone,
+          company: this.company,
+          address: this.address,
+          city: this.city,
           country: this.country,
-          hobbies: this.hobbyInputs.map(hobby => hobby.value),
+          postalCode: this.postalCode,
           terms: this.terms
         }
         console.log(formData)
