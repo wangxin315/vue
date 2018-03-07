@@ -5,6 +5,8 @@ import App from './App.vue'
 import axios from 'axios'
 import store from './store/store'
 
+import * as firebase from 'firebase'
+
 // LightBootstrap plugin
 import LightBootstrap from './light-bootstrap-main'
 
@@ -41,5 +43,15 @@ new Vue({
   el: '#app',
   router,
   render: h => h(App),
-  store
+  store,
+  created() {
+    firebase.initializeApp({
+      apiKey: "AIzaSyBvOXNbRQQUaXrhcTOhnjLg14SwX0geqL8",
+      authDomain: "troove-168621.firebaseapp.com",
+      databaseURL: "https://troove-168621.firebaseio.com",
+      projectId: "troove-168621",
+      storageBucket: "troove-168621.appspot.com",
+      messagingSenderId: "353784165861"
+    })
+  }
 })
