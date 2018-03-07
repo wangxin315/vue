@@ -6,9 +6,10 @@ import globalAxios from 'axios'
 import routes from '../../routes/routes'
 import VueRouter from 'vue-router';
 
+import * as firebase from 'firebase'
 Vue.use(Vuex)
 
-const router = new VueRouter({routes, linkActiveClass: 'nav-item active'});
+const router = new VueRouter({ routes, linkActiveClass: 'nav-item active' });
 
 const state = {
   idToken: null,
@@ -81,6 +82,57 @@ const actions = {
       })
       .catch(error => console.log(error))
   },
+  phone_login({ commit, dispatch }) {
+    console.log('phone login clicked');
+    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
+      'size': 'invisible',
+      'callback': function (response) {
+        // reCAPTCHA solved, allow signInWithPhoneNumber.
+        onSignInSubmit();
+      }
+    });
+    var phoneNumber = getPhoneNumberFromUserInput();
+    var appVerifier = window.recaptchaVerifier;
+    firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
+      .then(function (confirmationResult) {
+        console.log(confirmationResult);
+        // SMS sent. Prompt user to type the code from the message, then sign the
+        // user in with confirmationResult.confirm(code).
+        window.confirmationResult = confirmationResult;
+      }).catch(function (error) {
+        console.log(error);
+        // Error; SMS not sent
+        // ...
+      });
+  },
+  google_login({ commit, dispatch }) {
+    console.log('google login clicked');
+    var provider = new firebase.auth.GoogleAuthProvider();
+    provider.setCustomParameters({
+      prompt: 'select_account'
+    });
+    firebase.auth().signInWithPopup(provider).then(function (result) {
+      console.log(result);
+      localStorage.setItem('token', result.credential.idToken)
+      localStorage.setItem('userId', result.user.uid)
+      localStorage.setItem('expirationDate', 3600)
+      commit('authUser', {
+        token: result.credential.idToken,
+        userId: result.user.uid
+      })
+      dispatch('setLogoutTimer', 3600)
+      window.location.href = '#/admin/user';
+
+      // ...
+    }).catch(function (error) {
+      console.log(error);
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      var email = error.email;
+      var credential = error.credential;
+      // ...
+    });
+  },
   tryAutoLogin({ commit }) {
     const token = localStorage.getItem('token')
     if (!token) {
@@ -102,6 +154,11 @@ const actions = {
     localStorage.removeItem('expirationDate')
     localStorage.removeItem('token')
     localStorage.removeItem('userId')
+    firebase.auth().signOut().then(function () {
+      console.log('signout')
+  }).catch(function (error) {
+      console.log(error);
+    });
     window.location.href = '#/admin/signin';
   },
   storeUser({ commit, state }, userData) {
