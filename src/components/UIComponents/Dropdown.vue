@@ -1,5 +1,5 @@
 <template>
-  <li class="dropdown nav-item"
+  <li class="nav-item"
       :is="tag"
       :class="{show: isOpen}"
       aria-haspopup="true"

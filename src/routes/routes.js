@@ -6,7 +6,6 @@ import DashboardLayout from '../components/Dashboard/Layout/DashboardLayout.vue'
 // GeneralViews
 import NotFound from '../components/GeneralViews/NotFoundPage.vue'
 //login
-import LoginHome from 'src/components/LoginModule/LoginHome.vue'
 import signin from 'src/components/LoginModule/signin.vue'
 import signup from 'src/components/LoginModule/signup.vue'
 
@@ -18,7 +17,7 @@ import Typography from 'src/components/Dashboard/Views/Typography.vue'
 import Icons from 'src/components/Dashboard/Views/Icons.vue'
 import Maps from 'src/components/Dashboard/Views/Maps.vue'
 import Notifications from 'src/components/Dashboard/Views/Notifications.vue'
-
+import AddListing from 'src/components/Dashboard/Views/AddListing.vue'
 
 
 import store from '../store/store'
@@ -39,22 +38,9 @@ const routes = [
         component: Overview
       },
       {
-        path: '/admin/loginhome',
-        name: 'LoginHome',
-        component: LoginHome,
-         beforeEnter: (to, from, next) => {
-          alert('This area is for authorised users only, please login to continue.');
-          if (store.state.idToken) {
-            next({
-              path: '/admin/loginhome',
-              
-            })
-          } else {
-            next({
-              path: '/admin/signin'              
-            })
-          } 
-        }
+        path: 'addlisting',
+        name: 'Addlisting',
+        component: AddListing
       },
       {
         path: 'signup',
