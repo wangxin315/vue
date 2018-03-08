@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Dashboard</a>
+      <a class="navbar-brand" href="#"></a>
       <button type="button"
               class="navbar-toggler navbar-toggler-right"
               :class="{toggled: $sidebar.showSidebar}"
@@ -15,11 +15,11 @@
       </button>
       <div class="collapse navbar-collapse justify-content-end">
         <ul class="nav navbar-nav mr-auto">
-          <li class="nav-item">
+        <!--   <li class="nav-item">
             <a class="nav-link" href="#" data-toggle="dropdown">
               <i class="nc-icon nc-palette"></i>
             </a>
-          </li>
+          </li> -->
           <drop-down tag="li">
             <template slot="title">
               <i class="nc-icon nc-planet"></i>
@@ -33,24 +33,32 @@
             <a class="dropdown-item" href="#">Another notification</a>
           </drop-down>
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nc-icon nc-zoom-split"></i>
-              <span class="d-lg-block">&nbsp;Search</span>
-            </a>
+            <form class="form-inline">
+    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+    <button class="btn btn-outline-success my-1 my-sm-0 border-0" type="submit"><i class="nc-icon nc-zoom-split"></i></button>
+  </form>
+          
           </li>
         </ul>
-        <ul>
-        <li v-if="!auth">
-          <router-link to="/admin/signup">Sign Up</router-link>
+        <ul class="nav justify-content-end">
+         
+        <li class="nav-item" v-if="!auth">
+           <router-link :to="{ name: 'signup' }">
+                  <a class="nav-link">Sign Up</a>
+            </router-link>
         </li>
-        <li v-if="!auth">
-          <router-link to="/admin/signin">Sign In</router-link>
+        <li class="nav-item" v-if="!auth">
+          <router-link :to="{ name: 'signin' }">
+            <a class="nav-link">Sign In</a> 
+            </router-link>
         </li>
-        <li v-if="auth">
-          <router-link to="/admin/loginhome">Dashboard</router-link>
+        <li class="nav-item" v-if="auth">
+          <router-link :to="{ name: 'Overview' }">
+            <a class="nav-link">Overview</a>
+          </router-link>
         </li>
-        <li v-if="auth">
-          <button @click="onLogout" class="logout">Logout</button>
+        <li class="nav-item" v-if="auth">
+          <button @click="onLogout" class="nav-link logout rounded">Logout</button>
         </li>
       </ul>
       </div>

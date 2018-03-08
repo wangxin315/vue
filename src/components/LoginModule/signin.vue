@@ -1,51 +1,55 @@
 <template>
-  <div id="signin">
-    <div class="signin-form">
-      <div><h1>Signup</h1>
-<p>Login with Google or your mobile phone.
-</p>
-<div class="row">
-    <div class="col" @click="onGoogleLogin">
-     <input id="image" type="image" alt="Login" width="180"
-    src="../../../static/img/btn_google_signin_light_pressed_web@2x.png" 
-    >
-    </div>
-    <div class="col" @click="onPhoneLogin">
-     <button type="button" class="btn btn-primary btn-sm">Mobile Phone Signup</button>
-    </div>
   
-    
-</div>
-<br>
-<hr>
-<p>Or use your email and password</p>
-</div>
+    <div class="content col-md-6">
+      <div class="container-fluid">
+        <card>
+        <div>
+          <h2 slot="header" class="card-title">Sign In</h2>
+          <br>
 
-      <form @submit.prevent="onSubmit">
-        <div class="input">
-          <label for="email">Mail</label>
-          <input
-                  type="email"
-                  id="email"
-                  v-model="email">
+          <p>Login with Google or your mobile phone.
+          </p>
+          <div class="row">
+            <div class="col" @click="onGoogleLogin">
+              <input id="image" type="image" alt="Login" width="180" src="../../../static/img/btn_google_signin_light_pressed_web@2x.png">
+            </div>
+            <div class="col" @click="onPhoneLogin">
+              <button type="button" class="btn btn-primary btn-sm">Mobile Phone Signup</button>
+            </div>
+
+
+          </div>
+          <br>
+          <hr>
+          <p>Or use your email and password</p>
         </div>
-        <div class="input">
-          <label for="password">Password</label>
-          <input
-                  type="password"
-                  id="password"
-                  v-model="password">
-        </div>
-        <div class="submit">
-          <button type="submit">Submit</button>
-        </div>
-      </form>
+
+        <form @submit.prevent="onSubmit">
+          <div class="input">
+            <label for="email">Mail</label>
+            <input type="email" id="email" v-model="email">
+          </div>
+          <div class="input">
+            <label for="password">Password</label>
+            <input type="password" id="password" v-model="password">
+          </div>
+          <div class="submit">
+            <button type="submit">Submit</button>
+          </div>
+        </form>
+          </card>
+      </div>
     </div>
-  </div>
+
 </template>
 
 <script>
+import Card from 'src/components/UIComponents/Cards/Card.vue'
+
 export default {
+    components: {
+      Card
+    },
   data() {
     return {
       email: "",
@@ -75,13 +79,6 @@ export default {
 </script>
 
 <style scoped>
-.signin-form {
-  width: 400px;
-  margin: 30px auto;
-  border: 1px solid #eee;
-  padding: 20px;
-  box-shadow: 0 2px 3px #ccc;
-}
 
 .input {
   margin: 10px auto;
@@ -103,13 +100,13 @@ export default {
 
 .input input:focus {
   outline: none;
-  border: 1px solid #521751;
+  border: 1px solid #2c55ac;
   background-color: #eee;
 }
 
 .submit button {
-  border: 1px solid #521751;
-  color: #521751;
+  border: 1px solid #2c55ac;
+  color: #2c55ac;
   padding: 10px 20px;
   font: inherit;
   cursor: pointer;
@@ -117,7 +114,7 @@ export default {
 
 .submit button:hover,
 .submit button:active {
-  background-color: #521751;
+  background-color: #2c55ac;
   color: white;
 }
 
