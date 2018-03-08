@@ -78,7 +78,7 @@ const actions = {
         })
         dispatch('setLogoutTimer', res.data.expiresIn)
         // router.push('/admin/user');
-        window.location.href = '#/admin/user';
+        window.location.href = '#/pages/user';
       })
       .catch(error => console.log(error))
   },
