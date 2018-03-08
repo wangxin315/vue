@@ -82,16 +82,10 @@ const actions = {
       })
       .catch(error => console.log(error))
   },
-  phone_login({ commit, dispatch }) {
+  send_SMS({ commit, dispatch }, phoneNumber) {
     console.log('phone login clicked');
-    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
-      'size': 'invisible',
-      'callback': function (response) {
-        // reCAPTCHA solved, allow signInWithPhoneNumber.
-        onSignInSubmit();
-      }
-    });
-    var phoneNumber = getPhoneNumberFromUserInput();
+
+    var phoneNumber = '+' + phoneNumber;
     var appVerifier = window.recaptchaVerifier;
     firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
       .then(function (confirmationResult) {
@@ -104,6 +98,23 @@ const actions = {
         // Error; SMS not sent
         // ...
       });
+  },
+  verify_code({ commit, dispatch }, verify_code) {
+    window.confirmationResult.confirm(verify_code).then(result => {
+      localStorage.setItem('token', result.user.refreshToken)
+      localStorage.setItem('userId', result.user.uid)
+      localStorage.setItem('expirationDate', 3600)
+      commit('authUser', {
+        token: result.user.refreshToken,
+        userId: result.user.uid
+      })
+      dispatch('setLogoutTimer', 3600)
+      console.log(result.user);
+      window.location.href = '#/admin/user';
+    }).catch((error)=> {
+      console.log(error);
+      alert('Verify Code is Wrong. Please Retry!')
+    })
   },
   google_login({ commit, dispatch }) {
     console.log('google login clicked');
@@ -156,7 +167,7 @@ const actions = {
     localStorage.removeItem('userId')
     firebase.auth().signOut().then(function () {
       console.log('signout')
-  }).catch(function (error) {
+    }).catch(function (error) {
       console.log(error);
     });
     window.location.href = '#/admin/signin';
