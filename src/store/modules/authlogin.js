@@ -95,6 +95,7 @@ const actions = {
         window.confirmationResult = confirmationResult;
       }).catch(function (error) {
         console.log(error);
+        alert(error.message);
         // Error; SMS not sent
         // ...
       });
