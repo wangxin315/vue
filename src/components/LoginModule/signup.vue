@@ -124,53 +124,52 @@
 </template>
 
 <script>
-  import Card from 'src/components/UIComponents/Cards/Card.vue'
+import Card from "src/components/UIComponents/Cards/Card.vue";
 
 export default {
-    components: {
-      Card
-    },
-    data () {
-      return {
-        email: '',
-        firstName: '',
-        lastName: '',
-        password: '',
-        confirmPassword: '',
-        phone: '',
-         company: '',
-          address: '',
-          city: '',
-          country: '',
-          postalCode: '',
-        terms: false
-      }
-    },
-    methods: {
-      onSubmit () {
-        const formData = {
-          email: this.email,
-          firstName: this.firstName,
-          lastName: this.lastName,
-          password: this.password,
-          confirmPassword: this.confirmPassword,
-          phone: this.phone,
-          company: this.company,
-          address: this.address,
-          city: this.city,
-          country: this.country,
-          postalCode: this.postalCode,
-          terms: this.terms
-        }
-        console.log(formData)
-        this.$store.dispatch('signup', formData)
-      }
+  components: {
+    Card
+  },
+  data() {
+    return {
+      email: "",
+      firstName: "",
+      lastName: "",
+      password: "",
+      confirmPassword: "",
+      phone: "",
+      company: "",
+      address: "",
+      city: "",
+      country: "",
+      postalCode: "",
+      terms: false
+    };
+  },
+  methods: {
+    onSubmit() {
+      const formData = {
+        email: this.email,
+        firstName: this.firstName,
+        lastName: this.lastName,
+        password: this.password,
+        confirmPassword: this.confirmPassword,
+        phone: this.phone,
+        company: this.company,
+        address: this.address,
+        city: this.city,
+        country: this.country,
+        postalCode: this.postalCode,
+        terms: this.terms
+      };
+      console.log(formData);
+      this.$store.dispatch("signup", formData);
     }
   }
+};
 </script>
 
 <style scoped>
-
 .input {
   margin: 10px auto;
 }

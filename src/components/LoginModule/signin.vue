@@ -16,15 +16,33 @@
             <div class="col" @click="onPhoneLogin">
               <button type="button" class="btn btn-primary btn-sm">Mobile Phone Signup</button>
             </div>
-
-
           </div>
           <br>
           <hr>
-          <p>Or use your email and password</p>
+          <p @click='onEmailLogin'>Or use your email and password</p>
+        </div>
+        <div v-if='phone_login'>
+                  <div id='recaptcha-container'></div>
+
+          <div class="input">
+            <label for="phone_number">Phone Number</label>
+            <input type="number" id="phone" v-model="phone_number">
+          </div>
+          
+          <button type='button' class='btn btn-primary btn-sm' @click="send_SMS">Send SMS Code</button>
         </div>
 
-        <form @submit.prevent="onSubmit">
+        <div v-if='phone_login'>         
+
+          <div class="input">
+            <label for="verify_code">Verify Code</label>
+            <input type="number" id="code" v-model="verify_code">
+          </div>
+          
+          <button type='button' class='btn btn-primary btn-sm' @click="verifyLoginCode">Verify Code</button>
+        </div>
+
+        <form @submit.prevent="onSubmit" v-if='email_login'>
           <div class="input">
             <label for="email">Mail</label>
             <input type="email" id="email" v-model="email">
@@ -44,16 +62,21 @@
 </template>
 
 <script>
-import Card from 'src/components/UIComponents/Cards/Card.vue'
+import Card from "src/components/UIComponents/Cards/Card.vue";
+import * as firebase from "firebase";
 
 export default {
-    components: {
-      Card
-    },
+  components: {
+    Card
+  },
   data() {
     return {
       email: "",
-      password: ""
+      password: "",
+      phone_number: "",
+      verify_code:'',
+      phone_login: false,
+      email_login: true
     };
   },
   methods: {
@@ -68,18 +91,38 @@ export default {
         password: formData.password
       });
     },
+    onEmailLogin() {
+      this.phone_login = false;
+      this.email_login = true;
+    },
     onPhoneLogin() {
-      this.$store.dispatch('phone_login')
+      this.phone_login = true;
+      this.email_login = false;
+      setTimeout(() => {
+        window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
+        "recaptcha-container",
+        {
+          size: "invisible"
+        }
+      );
+      window.recaptchaVerifier.render();
+      }, 100);
+      
+    },
+    send_SMS() {
+      this.$store.dispatch("send_SMS", this.phone_number);
+    },
+    verifyLoginCode() {
+      this.$store.dispatch('verify_code', this.verify_code)
     },
     onGoogleLogin() {
-      this.$store.dispatch('google_login')
+      this.$store.dispatch("google_login");
     }
   }
 };
 </script>
 
 <style scoped>
-
 .input {
   margin: 10px auto;
 }
