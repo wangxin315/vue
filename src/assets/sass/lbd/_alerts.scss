@@ -1,4 +1,4 @@
-.alert{
+.alert, .vue-notifyjs.alert{
     border: 0;
     border-radius: 0;
     color: #FFFFFF;
@@ -41,7 +41,7 @@
         right: 10px;
         top: 50%;
         margin-top: -13px;
-        z-index: 1;
+        z-index: 3;
         background-color: #FFFFFF;
         display: block;
         border-radius: 50%;
@@ -73,18 +73,27 @@
         padding-left: 65px;
     }
 }
-.alert-primary{
+.alert,
+.vue-notifyjs.alert{
+  &.alert-primary{
     background-color: $blue-navbar;
-}
-.alert-info{
-     background-color: $azure-navbar;
-}
-.alert-success {
+    color: white;
+  }
+  &.alert-info{
+    background-color: $azure-navbar;
+     color: white;
+  }
+  &.alert-success {
     background-color: $green-navbar;
+     color: white;
+  }
+  &.alert-warning {
+    background-color: $orange-navbar;
+     color: white;
+  }
+  &.alert-danger {
+    background-color: $red-navbar;
+     color: white;
+  }
 }
-.alert-warning {
-     background-color: $orange-navbar;
-}
-.alert-danger {
-     background-color: $red-navbar;
-}
+

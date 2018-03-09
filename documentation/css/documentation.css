@@ -198,6 +198,6 @@ pre.prettyprint{
 }
 .filter:after{
     background: #0a6715;
-    background: rgba(0, 0, 0, 0) linear-gradient(to bottom, #0ab961 0%, #0a6715 100%) repeat scroll 0 0 / 150% 150%;
+    background: rgba(0, 0, 0, 0) linear-gradient(to bottom, #47B784 0%, #36495D 80%) repeat scroll 0 0 / 150% 150%;
     height: 100% !important;
 }

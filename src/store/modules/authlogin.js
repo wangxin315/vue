@@ -78,7 +78,7 @@ const actions = {
         })
         dispatch('setLogoutTimer', res.data.expiresIn)
         // router.push('/admin/user');
-        window.location.href = '#/admin/user';
+        window.location.href = '#/pages/user';
       })
       .catch(error => console.log(error))
   },
@@ -95,6 +95,7 @@ const actions = {
         window.confirmationResult = confirmationResult;
       }).catch(function (error) {
         console.log(error);
+        alert(error.message);
         // Error; SMS not sent
         // ...
       });
