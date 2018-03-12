@@ -1,4 +1,5 @@
 import DashboardLayout from 'src/pages/Dashboard/Layout/DashboardLayout.vue'
+import IndexLayout from 'src/pages/Dashboard/Layout/IndexLayout.vue'
 // GeneralViews
 import NotFound from 'src/pages/GeneralViews/NotFoundPage.vue'
 // Dashboard pages
@@ -11,7 +12,14 @@ import signup from 'src/pages/LoginModule/signup.vue'
 
 //home
 import AddListing from 'src/pages/GeneralViews/AddListing.vue'
+import CarExtendSearch from 'src/pages/GeneralViews/CarExtendSearch.vue'
 import index from 'src/pages/GeneralViews/index.vue'
+import About from 'src/pages/GeneralViews/About.vue'
+import Agreement from 'src/pages/GeneralViews/Agreement.vue'
+import ContactUs from 'src/pages/GeneralViews/ContactUs.vue'
+
+// Dealer
+import DealerProfile from 'src/pages/DealerViews/DealerProfile.vue'
 
 // Pages
 import User from 'src/pages/Dashboard/Pages/UserProfile.vue'
@@ -234,13 +242,33 @@ const routes = [
    
   {
     path: '/home',
-    component: DashboardLayout,
+    component: IndexLayout,
     redirect: '/home/index',
     children: [
       {
         path: 'index',
         name: 'indexPage',
         component: index
+      },
+      {
+        path: '/about',
+        name: 'AboutPage',
+        component: About
+      },
+      {
+        path: '/carextendearch',
+        name: 'CarExtendSearchPage',
+        component: CarExtendSearch
+      },
+      {
+        path: '/agreement',
+        name: 'AgreementPage',
+        component: Agreement
+      },
+      {
+        path: '/contactus',
+        name: 'ContactUsPage',
+        component: ContactUs
       }
     
     ]},
@@ -295,6 +323,11 @@ const routes = [
         path: 'signup',
         name: 'signupPage',
         component: signup
+      },
+      {
+        path: 'dealerprofile',
+        name: 'DealerprofilePage',
+        component: DealerProfile
       }
     ]
   },

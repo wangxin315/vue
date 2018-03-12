@@ -4,6 +4,10 @@ import VueRouter from 'vue-router'
 import App from './App.vue'
 import axios from 'axios'
 import store from './store/store'
+import VueAgile from 'vue-agile'
+
+Vue.use(VueAgile)
+
 
 import * as firebase from 'firebase'
 

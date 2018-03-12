@@ -95,7 +95,11 @@ const actions = {
         window.confirmationResult = confirmationResult;
       }).catch(function (error) {
         console.log(error);
-        alert(error.message);
+        swal({
+          type: 'error',
+          title: 'Oops...',
+          text: 'Phone number must be format :\n1 234 456 7890!',
+        });
         // Error; SMS not sent
         // ...
       });
@@ -114,7 +118,11 @@ const actions = {
       window.location.href = '#/admin/user';
     }).catch((error)=> {
       console.log(error);
-      alert('Verify Code is Wrong. Please Retry!')
+      swal({
+        type: 'error',
+        title: 'Oops...',
+        text: 'Verification code is wrong!',
+      });
     })
   },
   google_login({ commit, dispatch }) {
@@ -210,6 +218,8 @@ const getters = {
     return state.idToken !== null
   }
 };
+
+import swal from 'sweetalert2'
 
 export default {
   state,

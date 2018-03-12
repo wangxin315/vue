@@ -1,8 +1,31 @@
 <template>
-<div class="centerme">
+<div>
   <ul class="nav nav-mobile-menu mt-2">
+
+     
+          <drop-down>
+            <i slot="title" class="nc-icon nc-planet">  General Infos </i>
+            <li class="nav-item">
+              <router-link :to="{ name: 'AboutPage' }">
+                <a class="nav-link">About Us</a>
+              </router-link>
+            </li>
+            <li class="nav-item">
+              <router-link :to="{ name: 'ContactUsPage' }">
+                <a class="nav-link">Contact Us</a>
+              </router-link>
+            </li>
+            <li class="divider"></li>
+            <li class="nav-item">
+              <router-link :to="{ name: 'AgreementPage' }">
+                <a class="nav-link">Legal Agreement</a>
+              </router-link>
+            </li>
+
+          </drop-down>
+          
    
-    <li class="nav-item" v-if="auth">
+    <li class="nav-item centerme" v-if="auth">
      <button @click="onLogout" type="button" class="btn btn-wd btn-sm btn-danger btn-outline">
                                 <span class="btn-label">
                                     <i class="fa fa-times"></i>
