@@ -9,27 +9,46 @@
           <br>
 <p>Signup with Google or your mobile phone.
 </p>
-<div class="row">
-    <div class="col">
-     <input id="image" type="image" alt="Login" width="180"
-    src="../../../static/img/btn_google_signin_light_pressed_web@2x.png" 
-    >
-    </div>
-    <div class="col">
-     <button type="button" class="btn btn-primary btn-sm">Mobile Phone Signup</button>
-    </div>
-  
-    
-</div>
+ <div class="row d-flex p-2">
+            <div class="btn-toolbar">
+            <div class="btn-group">
+           <button @click="onGoogleLogin" alt="LoginGoogle" class="btn btn-social  btn-google">
+                <i class="fa fa-google"></i> Google Login 
+              </button> 
+             
+              <button @click="onPhoneLogin" alt="LoginPhone" class="btn btn-social  btn-linkedin">
+                <i class="fa fa-mobile"></i> Mobile phone Login
+              </button> 
+            </div></div>
+          </div>
 <br>
 <hr>
 <div class="row">
-<p>Or create a account</p>
+<p @click='onEmailLogin'>Or create a account</p>
 </div>
 
+       <div v-if='phone_login'>
+                  <div id='recaptcha-container'></div>
 
+          <div class="input">
+            <label for="phone_number">Phone Number</label>
+            <input type="number" id="phone" v-model="phone_number">
+          </div>
+          
+          <button type='button' class='btn btn-primary btn-sm' @click="send_SMS">Send SMS Code</button>
+        </div>
+
+        <div v-if='phone_login'>         
+
+          <div class="input">
+            <label for="verify_code">Verify Code</label>
+            <input type="number" id="code" v-model="verify_code">
+          </div>
+          
+          <button type='button' class='btn btn-primary btn-sm' @click="verifyLoginCode">Verify Code</button>
+        </div>
     
-      <form @submit.prevent="onSubmit">
+      <form @submit.prevent="onSubmit" v-if='email_login'>
         <div class="input">
           <label for="email">E-Mail</label>
           <input
@@ -70,7 +89,7 @@
           <input
                   type="text"
                   id="phone"
-                  v-model="phone">
+                  v-model="phone_number">
         </div>
         <div class="input">
           <label for="company">Company</label>
@@ -125,6 +144,7 @@
 
 <script>
 import Card from "src/components/Cards/Card.vue";
+import * as firebase from "firebase";
 
 export default {
   components: {
@@ -137,13 +157,16 @@ export default {
       lastName: "",
       password: "",
       confirmPassword: "",
-      phone: "",
-      company: "",
+       phone_number: "",
+      verify_code:'',
+     company:"",
       address: "",
       city: "",
       country: "",
       postalCode: "",
-      terms: false
+      terms: false,
+       phone_login: false,
+      email_login: true
     };
   },
   methods: {
@@ -164,7 +187,35 @@ export default {
       };
       console.log(formData);
       this.$store.dispatch("signup", formData);
+    },
+    onEmailLogin() {
+      this.phone_login = false;
+      this.email_login = true;
+    },
+    onPhoneLogin() {
+      this.phone_login = true;
+      this.email_login = false;
+      setTimeout(() => {
+        window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
+        "recaptcha-container",
+        {
+          size: "invisible"
+        }
+      );
+      window.recaptchaVerifier.render();
+      }, 100);
+      
+    },
+    send_SMS() {
+      this.$store.dispatch("send_SMS", this.phone_number);
+    },
+    verifyLoginCode() {
+      this.$store.dispatch('verify_code', this.verify_code)
+    },
+    onGoogleLogin() {
+      this.$store.dispatch("google_login");
     }
+  
   }
 };
 </script>

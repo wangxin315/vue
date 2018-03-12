@@ -9,13 +9,17 @@
 
           <p>Login with Google or your mobile phone.
           </p>
-          <div class="row">
-            <div class="col" @click="onGoogleLogin">
-              <input id="image" type="image" alt="Login" width="180" src="../../../static/img/btn_google_signin_light_pressed_web@2x.png">
-            </div>
-            <div class="col" @click="onPhoneLogin">
-              <button type="button" class="btn btn-primary btn-sm">Mobile Phone Signup</button>
-            </div>
+          <div class="row d-flex p-2">
+            <div class="btn-toolbar">
+            <div class="btn-group">
+           <button @click="onGoogleLogin" alt="LoginGoogle" class="btn btn-social  btn-google">
+                <i class="fa fa-google"></i> Google Login 
+              </button> 
+             
+              <button @click="onPhoneLogin" alt="LoginPhone" class="btn btn-social  btn-linkedin">
+                <i class="fa fa-mobile"></i> Mobile phone Login
+              </button> 
+            </div></div>
           </div>
           <br>
           <hr>
