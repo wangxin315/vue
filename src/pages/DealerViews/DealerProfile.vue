@@ -18,8 +18,8 @@ import DealerCard from './DealerProfile/DealerCard.vue'
 
   export default {
     components: {
-      EditProfileForm,
-      UserCard
+      EditDealerProfileForm,
+      DealerCard
     }
   }
 
