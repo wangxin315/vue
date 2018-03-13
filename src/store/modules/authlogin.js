@@ -115,7 +115,7 @@ const actions = {
       })
       dispatch('setLogoutTimer', 3600)
       console.log(result.user);
-      window.location.href = '#/admin/user';
+      window.location.href = '#/pages/user';
     }).catch((error)=> {
       console.log(error);
       swal({
@@ -141,7 +141,7 @@ const actions = {
         userId: result.user.uid
       })
       dispatch('setLogoutTimer', 3600)
-      window.location.href = '#/admin/user';
+      window.location.href = '#/pages/user';
 
       // ...
     }).catch(function (error) {
@@ -179,7 +179,7 @@ const actions = {
     }).catch(function (error) {
       console.log(error);
     });
-    window.location.href = '#/admin/signin';
+    window.location.href = '#/home';
   },
   storeUser({ commit, state }, userData) {
     if (!state.idToken) {
