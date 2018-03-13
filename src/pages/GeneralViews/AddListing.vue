@@ -1,10 +1,7 @@
 <template>
-  <auth-layout class="not-found-page">
-    <div class="centered">
-      <h1><i class="not-found-icon nc-icon nc-puzzle-10"></i>404</h1>
+  <div>
       <h1>Add a car</h1>
-    </div>
-  </auth-layout>
+ </div>
 </template>
 
 <script>

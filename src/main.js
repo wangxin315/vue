@@ -23,7 +23,9 @@ Vue.use(LightBootstrap)
 // configure router
 const router = new VueRouter({
   routes, // short for routes: routes
-  linkActiveClass: 'nav-item active'
+  linkActiveClass: 'nav-item active',
+  //mode: 'history',
+ 
 })
 
 axios.defaults.baseURL = 'https://troove-168621.firebaseio.com/'

@@ -299,6 +299,8 @@ const routes = [
   AddListingPage,
 //  signinPage,
 //  signupPage,
+
+
   {
     path: '/admin',
     component: DashboardLayout,
@@ -328,10 +330,15 @@ const routes = [
         path: 'dealerprofile',
         name: 'DealerprofilePage',
         component: DealerProfile
+      },
+      {
+        path: 'addlisting',
+        name: 'AddListingPage',
+        component: AddListing
       }
     ]
   },
-  {path: '*', component: NotFound}
+  {path: '*', redirect: '/' }
 ]
 
 export default routes
