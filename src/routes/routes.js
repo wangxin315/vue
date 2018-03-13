@@ -269,6 +269,16 @@ const routes = [
         path: '/contactus',
         name: 'ContactUsPage',
         component: ContactUs
+      },
+      {
+        path: 'signin',
+        name: 'signinPage',
+        component: signin
+      },
+      {
+        path: 'signup',
+        name: 'signupPage',
+        component: signup
       }
     
     ]},
@@ -313,16 +323,6 @@ const routes = [
         path: 'charts',
         name: 'Charts',
         component: Charts
-      },
-      {
-        path: 'signin',
-        name: 'signinPage',
-        component: signin
-      },
-      {
-        path: 'signup',
-        name: 'signupPage',
-        component: signup
       },
       {
         path: 'dealerprofile',

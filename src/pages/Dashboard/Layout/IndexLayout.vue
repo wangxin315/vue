@@ -1,8 +1,8 @@
 <template>
   <div class="wrapper" :class="{'nav-open': $sidebar.showSidebar}">
-    <side-bar>
+    <!-- <side-bar>
        <mobile-menu></mobile-menu>
-   </side-bar> 
+   </side-bar>  -->
     
     <div>
       <index-top-navbar></index-top-navbar>
