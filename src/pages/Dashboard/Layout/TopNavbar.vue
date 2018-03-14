@@ -40,7 +40,7 @@
             <a class="dropdown-item" href="#">Another action</a>
 
           </drop-down> -->
-          <drop-down>
+      <!--     <drop-down>
             <template slot="title">
               <i class="nc-icon nc-bell-55"></i>
               <span class="notification">5</span>
@@ -52,7 +52,7 @@
             <a class="dropdown-item" href="#">Notification 4</a>
             <a class="dropdown-item" href="#">Another notification</a>
           </drop-down>
-        <!--  <drop-down position="right">
+         <drop-down position="right">
             <i slot="title" class="nc-icon nc-bullet-list-67"></i>
 
             <a class="dropdown-item" href="#">
@@ -73,6 +73,34 @@
             </a>
 
           </drop-down> -->
+
+                
+          <drop-down tag="div">
+             <template slot="title">
+   <!-- <i class="fa fa-globe"></i> -->
+    <span class=""> Info</span>
+    
+  </template>
+           
+            <li class="nav-item">
+              <router-link :to="{ name: 'AboutPage' }">
+                <a class="nav-link">About Us</a>
+              </router-link>
+            </li>
+            <li class="nav-item">
+              <router-link :to="{ name: 'ContactUsPage' }">
+                <a class="nav-link">Contact Us</a>
+              </router-link>
+            </li>
+            <li class="divider"></li>
+            <li class="nav-item">
+              <router-link :to="{ name: 'AgreementPage' }">
+                <a class="nav-link">Legal Agreement</a>
+              </router-link>
+            </li>
+
+          </drop-down>
+          
         </ul>
  
         <ul class="nav justify-content-end">
@@ -87,11 +115,7 @@
             <a class="nav-link">Sign In</a> 
             </router-link>
         </li>
-        <li class="nav-item" v-if="auth">
-          <router-link :to="{ name: 'Overview' }">
-            <a class="nav-link">Overview</a>
-          </router-link>
-        </li>
+       
         <li class="nav-item" v-if="auth">
           <button @click="onLogout" class="nav-link logout rounded">Logout</button>
         </li>

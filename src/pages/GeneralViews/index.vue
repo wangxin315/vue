@@ -9,7 +9,7 @@
     <div class="slide slide--2"></div>
     <div class="slide slide--3"></div>
     <div class="slide slide--4"></div>
-    <div class="slide slide--5"></div>
+    
 </agile>
     </main>
       
@@ -137,20 +137,18 @@ In cursus turpis massa tincidunt. Urna nec tincidunt praesent semper. Vitae elem
     height: 300px;
 
     &--1 {
-        background-image: url(../../../static/img/sidebar-1.jpg);
+        background-image: url(../../../static/img/car1.jpg);
     }
      &--2 {
-        background-image: url(../../../static/img/sidebar-2.jpg);
+        background-image: url(../../../static/img/car2.jpg);
     }
       &--3 {
-        background-image: url(../../../static/img/sidebar-3.jpg);
+        background-image: url(../../../static/img/car3.jpg);
     }
       &--4 {
-        background-image: url(../../../static/img/sidebar-4.jpg);
+        background-image: url(../../../static/img/car4.jpg);
     }
-      &--5 {
-        background-image: url(../../../static/img/sidebar-5.jpg);
-    }
+    
 
 
 }

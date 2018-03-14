@@ -28,7 +28,7 @@ const router = new VueRouter({
  
 })
 
-axios.defaults.baseURL = 'https://troove-168621.firebaseio.com/'
+ axios.defaults.baseURL = 'https://troove-168621.firebaseio.com/'
 // axios.defaults.headers.common['Authorization'] = 'fasfdsa'
 axios.defaults.headers.get['Accepts'] = 'application/json'
 
@@ -43,7 +43,7 @@ const resInterceptor = axios.interceptors.response.use(res => {
 
 axios.interceptors.request.eject(reqInterceptor)
 axios.interceptors.response.eject(resInterceptor)
-
+ 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
