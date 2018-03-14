@@ -1,4 +1,4 @@
-/* import Firebase from 'firebase'
+import * as firebase from 'firebase'
 
 var config = {
     apiKey: "AIzaSyBvOXNbRQQUaXrhcTOhnjLg14SwX0geqL8",
@@ -9,7 +9,7 @@ var config = {
     messagingSenderId: "353784165861"
 
 };
-const firebaseApp = Firebase.initializeApp(config);
-const db = firebaseApp.database()
+export const firebaseApp = firebase.initializeApp(config);
+const db = firebase.database();
 export const dbUsersRef = db.ref('users')
- */
+ 
