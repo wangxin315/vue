@@ -56,6 +56,7 @@ const actions = {
         localStorage.setItem('expirationDate', expirationDate)
         dispatch('storeUser', authData)
         dispatch('setLogoutTimer', res.data.expiresIn)
+        window.location.href = '#/pages/user';
       })
       .catch(error => console.log(error))
   },

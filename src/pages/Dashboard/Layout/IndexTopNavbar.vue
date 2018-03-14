@@ -9,7 +9,7 @@
         </button>
       </div>
 
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="/index">
         <img src="static/img/header-logo.jpg" height="30" alt="">
       </a>
 
@@ -36,8 +36,13 @@
           </form>--> 
         </ul>
         <ul class="navbar-nav">
-          <drop-down>
-            <i slot="title" class="nc-icon nc-planet">  General Infos </i>
+          <drop-down tag="div">
+             <template slot="title">
+   <!-- <i class="fa fa-globe"></i> -->
+    <span class=""> Info</span>
+    
+  </template>
+           
             <li class="nav-item">
               <router-link :to="{ name: 'AboutPage' }">
                 <a class="nav-link">About Us</a>

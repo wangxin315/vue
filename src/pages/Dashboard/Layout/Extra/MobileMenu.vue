@@ -3,8 +3,12 @@
   <ul class="nav nav-mobile-menu mt-2">
 
      
-          <drop-down>
-            <i slot="title" class="nc-icon nc-planet">  General Infos </i>
+                   <drop-down tag="div">
+            
+    <i class="fa fa-globe"></i>
+    <span class="text-danger"> Info</span>
+    <b class="caret"></b>
+  
             <li class="nav-item">
               <router-link :to="{ name: 'AboutPage' }">
                 <a class="nav-link">About Us</a>
