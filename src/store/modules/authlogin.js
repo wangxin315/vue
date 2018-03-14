@@ -7,6 +7,7 @@ import routes from '../../routes/routes'
 import VueRouter from 'vue-router';
 
 import * as firebase from 'firebase'
+import dbUsersRef from '../../firebaseConfig'
 Vue.use(Vuex)
 
 const router = new VueRouter({ routes, linkActiveClass: 'nav-item active' });
