@@ -18,6 +18,9 @@ const state = {
   user: null
 };
 
+
+// MUTATION 
+
 const mutations = {
   authUser(state, userData) {
     state.idToken = userData.token
@@ -31,6 +34,9 @@ const mutations = {
     state.userId = null
   }
 };
+
+
+// ACTION
 
 const actions = {
   setLogoutTimer({ commit }, expirationTime) {
@@ -75,8 +81,9 @@ const actions = {
         localStorage.setItem('userId', res.data.localId)
         localStorage.setItem('expirationDate', expirationDate)
         commit('authUser', {
-          token: res.data.idToken,
+          token: res.data.idToken, 
           userId: res.data.localId
+          
         })
         dispatch('setLogoutTimer', res.data.expiresIn)
         // router.push('/admin/user');
@@ -211,6 +218,8 @@ const actions = {
       .catch(error => console.log(error))
   }
 };
+
+// GETTERS
 
 const getters = {
   user(state) {

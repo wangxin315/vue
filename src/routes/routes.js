@@ -237,7 +237,7 @@ let indexPage = {
 const routes = [
   {
     path: '/',
-    redirect: '/home/index'
+    redirect: 'home'
   },
    
   {

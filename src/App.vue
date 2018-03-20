@@ -6,7 +6,13 @@
 </template>
 
 <script>
-  export default {}
+  export default {
+    created () {
+      this.$store.dispatch('tryAutoLogin')
+    }
+
+
+  }
 </script>
 <style lang="scss">
   .vue-notifyjs.notifications{

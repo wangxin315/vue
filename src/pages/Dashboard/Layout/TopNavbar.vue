@@ -104,6 +104,12 @@
         </ul>
  
         <ul class="nav justify-content-end">
+
+           <li class="nav-item" v-if="auth">
+           <router-link :to="{ name: 'Overview' }">
+                  <a class="nav-link">Administration</a>
+            </router-link>
+        </li>
          
         <li class="nav-item" v-if="!auth">
            <router-link :to="{ name: 'signupPage' }">

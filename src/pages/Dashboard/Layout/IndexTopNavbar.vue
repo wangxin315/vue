@@ -9,8 +9,8 @@
         </button>
       </div>
 
-      <a class="navbar-brand" href="/index">
-        <img src="static/img/header-logo.jpg" height="30" alt="">
+      <a class="navbar-brand"><router-link :to="{ name: 'indexPage' }">
+        <img src="static/img/header-logo.jpg" height="30" alt=""></router-link>
       </a>
 
 
@@ -97,27 +97,29 @@
           </drop-down> 
         </ul>-->
 
-          <ul class="nav justify-content-end">
+ <ul class="nav justify-content-end">
 
-            <li class="nav-item" v-if="!auth">
-              <router-link :to="{ name: 'signupPage' }">
-                <a class="nav-link">Sign Up</a>
-              </router-link>
-            </li>
-            <li class="nav-item" v-if="!auth">
-              <router-link :to="{ name: 'signinPage' }">
-                <a class="nav-link">Sign In</a>
-              </router-link>
-            </li>
-            <li class="nav-item" v-if="auth">
-              <router-link :to="{ name: 'Overview' }">
-                <a class="nav-link">Overview</a>
-              </router-link>
-            </li>
-            <li class="nav-item" v-if="auth">
-              <button @click="onLogout" class="nav-link logout rounded">Logout</button>
-            </li>
-          </ul>
+     <li class="nav-item" v-if="auth">
+           <router-link :to="{ name: 'Overview' }">
+                  <a class="nav-link">Administration</a>
+            </router-link>
+        </li>
+         
+        <li class="nav-item" v-if="!auth">
+           <router-link :to="{ name: 'signupPage' }">
+                  <a class="nav-link">Sign Up</a>
+            </router-link>
+        </li>
+        <li class="nav-item" v-if="!auth">
+          <router-link :to="{ name: 'signinPage' }">
+            <a class="nav-link">Sign In</a> 
+            </router-link>
+        </li>
+       
+        <li class="nav-item" v-if="auth">
+          <button @click="onLogout" class="nav-link logout rounded">Logout</button>
+        </li>
+      </ul>
 
       </div>
     </div>
@@ -165,10 +167,6 @@
   }
 
 </script>
-<style lang="scss">
-
-.logodiv {
-    max-width: 10px;
-}
+<style>
 
 </style>
