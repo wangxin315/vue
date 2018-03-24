@@ -55,7 +55,7 @@
       value: [String, Number],
       addonRightIcon: String,
       addonLeftIcon: String
-      
+  
     },
     data () {
       return {

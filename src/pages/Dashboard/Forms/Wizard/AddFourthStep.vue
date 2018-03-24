@@ -27,9 +27,9 @@
   </div>
 </template>
 <script>
-  import { mapFields } from 'vee-validate'
+//  import { mapFields } from 'vee-validate'
   import { Select, Option } from 'element-ui'
-  import {FormGroupInput as FgInput} from 'src/components'
+//  import {FormGroupInput as FgInput} from 'src/components'
   import CloudinaryUppy from 'src/components/CloudinaryUppy.vue'
 
   export default {
@@ -38,18 +38,14 @@
       [Option.name]: Option,
       CloudinaryUppy
     },
-    computed: {
-    
-    },
+    computed: { },
     data () {
       return {
-     
- 
+
       }
     },
     methods: {
- 
-      
+
     }
   }
 </script>

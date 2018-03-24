@@ -35,14 +35,14 @@
 
   Vue.use(VueTabs)
   export default {
-    
+  
     components: {
       DropDown,
       Checkbox,
       Radio,
       [Collapse.name]: Collapse,
       [CollapseItem.name]: CollapseItem},
-      
+
     data () {
       return {
         activeName: 'first',
@@ -62,7 +62,7 @@
           disabledUnchecked: false,
           disabledChecked: true
         }
-      
+
       }
     }
   }

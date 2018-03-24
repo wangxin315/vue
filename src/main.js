@@ -1,16 +1,15 @@
 import Vue from 'vue'
-import "babel-polyfill";
+import 'babel-polyfill'
 import VueRouter from 'vue-router'
 import App from './App.vue'
 import axios from 'axios'
 import store from './store/store'
 import VueAgile from 'vue-agile'
-import firebaseApp from './firebaseConfig'
+// import firebaseApp from './firebaseConfig'
 
 Vue.use(VueAgile)
 
-
-import * as firebase from 'firebase'
+// import * as firebase from 'firebase'
 
 // LightBootstrap plugin
 import LightBootstrap from './light-bootstrap-main'
@@ -24,12 +23,11 @@ Vue.use(LightBootstrap)
 // configure router
 const router = new VueRouter({
   routes, // short for routes: routes
-  linkActiveClass: 'nav-item active',
-  //mode: 'history',
- 
+  linkActiveClass: 'nav-item active'
+  // mode: 'history',
 })
 
- axios.defaults.baseURL = 'https://troove-168621.firebaseio.com/'
+axios.defaults.baseURL = 'https://troove-168621.firebaseio.com/'
 // axios.defaults.headers.common['Authorization'] = 'fasfdsa'
 axios.defaults.headers.get['Accepts'] = 'application/json'
 
@@ -44,14 +42,11 @@ const resInterceptor = axios.interceptors.response.use(res => {
 
 axios.interceptors.request.eject(reqInterceptor)
 axios.interceptors.response.eject(resInterceptor)
- 
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
   render: h => h(App),
-  store,
-  created() {
-    
-  }
+  store
 })

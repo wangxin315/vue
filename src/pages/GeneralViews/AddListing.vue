@@ -71,7 +71,10 @@
 
 <script>
   import AuthLayout from 'src/pages/Dashboard/Pages/AuthLayout.vue'
- import {FormWizard, TabContent} from 'vue-form-wizard'
+  import {
+    FormWizard,
+    TabContent
+  } from 'vue-form-wizard'
   import 'src/assets/wizard/vue-form-wizard.min.css'
   import FirstStep from 'src/pages/Dashboard/Forms/Wizard/AddFirstStep.vue'
   import SecondStep from 'src/pages/Dashboard/Forms/Wizard/AddSecondStep.vue'
@@ -82,14 +85,14 @@
 
   export default {
   
-     data () {
+    data () {
       return {
         wizardModel: {}
       }
     },
     components: {
       AuthLayout,
-       FormWizard,
+      FormWizard,
       TabContent,
       FirstStep,
       SecondStep,
@@ -108,7 +111,7 @@
         swal('Good job!', 'You clicked the finish button!', 'success')
       }
     }
-    }
+  }
   
 </script>
 <style lang="scss">

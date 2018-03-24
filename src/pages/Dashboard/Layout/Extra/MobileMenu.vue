@@ -48,8 +48,8 @@
     components: {
       DropDown
     },
-     computed: {
-        auth () {
+    computed: {
+      auth () {
         return this.$store.getters.isAuthenticated
       },
       routeName () {
@@ -58,7 +58,7 @@
       }
     },
     methods: {
-        onLogout() {
+      onLogout () {
         this.$store.dispatch('logout')
       }
     }

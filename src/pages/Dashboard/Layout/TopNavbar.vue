@@ -134,7 +134,7 @@
 <script>
   export default {
     computed: {
-        auth () {
+      auth () {
         return this.$store.getters.isAuthenticated
       },
       routeName () {
@@ -148,7 +148,7 @@
       }
     },
     methods: {
-        onLogout() {
+      onLogout () {
         this.$store.dispatch('logout')
       },
       capitalizeFirstLetter (string) {

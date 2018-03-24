@@ -101,18 +101,17 @@
 </template>
 <script>
 
-import axios from 'axios'
+// import axios from 'axios'
 
   export default {
     data () {
       return {
-        
-        user: {
-         
+        user:
+        {
           company: '',
           email: '',
           lastName: '',
-          firstName:'',
+          firstName: '',
           address: '',
           city: '',
           country: '',
@@ -121,61 +120,59 @@ import axios from 'axios'
         }
       }
     },
+/* eslint-disable */
     computed: {
-        email () {
-          return !this.$store.getters.user ? false : this.$store.getters.user.email
-            return this.$store.getters.user.email
-          },
-           company () {
-          return !this.$store.getters.user ? false : this.$store.getters.user.company
-            return this.$store.getters.user.company
-          },
-        
-             lastName () {
-          return !this.$store.getters.user ? false : this.$store.getters.user.lastName
-            return this.$store.getters.user.lastName
-          },
-             firstName () {
-          return !this.$store.getters.user ? false : this.$store.getters.user.firstName
-            return this.$store.getters.user.firstName
-          },
-             address () {
-          return !this.$store.getters.user ? false : this.$store.getters.user.address
-            return this.$store.getters.user.address
-          },
-              city () {
-          return !this.$store.getters.user ? false : this.$store.getters.user.city
-            return this.$store.getters.user.city
-          },
-               country () {
-          return !this.$store.getters.user ? false : this.$store.getters.user.country
-            return this.$store.getters.user.country
-          },
-                 postalCode () {
-          return !this.$store.getters.user ? false : this.$store.getters.user.postalCode
-            return this.$store.getters.user.postalCode
-          },
-                  aboutMe () {
-          return !this.$store.getters.user ? false : this.$store.getters.user.aboutMe
-            return this.$store.getters.user.aboutMe
-          }
+      email () {
+        return !this.$store.getters.user ? false : this.$store.getters.user.email
+        return this.$store.getters.user.email
+      },
+      company () {
+             return !this.$store.getters.user ? false : this.$store.getters.user.company
+             return this.$store.getters.user.company
+           },
+
+      lastName () {
+               return !this.$store.getters.user ? false : this.$store.getters.user.lastName
+               return this.$store.getters.user.lastName
+             },
+      firstName () {
+               return !this.$store.getters.user ? false : this.$store.getters.user.firstName
+               return this.$store.getters.user.firstName
+             },
+      address () {
+               return !this.$store.getters.user ? false : this.$store.getters.user.address
+               return this.$store.getters.user.address
+             },
+      city () {
+                return !this.$store.getters.user ? false : this.$store.getters.user.city
+                return this.$store.getters.user.city
+              },
+      country () {
+                 return !this.$store.getters.user ? false : this.$store.getters.user.country
+                 return this.$store.getters.user.country
+               },
+      postalCode () {
+                   return !this.$store.getters.user ? false : this.$store.getters.user.postalCode
+                   return this.$store.getters.user.postalCode
+                 },
+      aboutMe () {
+                    return !this.$store.getters.user ? false : this.$store.getters.user.aboutMe
+                    return this.$store.getters.user.aboutMe
+                  }
     },
 
     created () {
       this.$store.dispatch('fetchUser')
- 
     },
-
 
     methods: {
       updateProfile () {
         alert('Your data: ' + JSON.stringify(this.user)
-        
-        ) 
-      },
+        )
+      }
       /*  onSubmit () {
       const userData = {
-          
+
           company: this.company,
           lastName: this.lastName,
           firstName: this.firstName,
@@ -189,10 +186,9 @@ import axios from 'axios'
       axios.post('/users.json', userData)
       .then(res => console.log(res))
         .catch(error => console.log(error)
-           
+
     },  */
-          },
-        
+    }
   }
 
 </script>

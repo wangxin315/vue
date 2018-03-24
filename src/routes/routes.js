@@ -1,3 +1,4 @@
+/* eslint-disable */
 import DashboardLayout from 'src/pages/Dashboard/Layout/DashboardLayout.vue'
 import IndexLayout from 'src/pages/Dashboard/Layout/IndexLayout.vue'
 // GeneralViews

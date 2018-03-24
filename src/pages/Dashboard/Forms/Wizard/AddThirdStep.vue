@@ -53,28 +53,16 @@
   </div>
 </template>
 <script>
- import {FormGroupInput as FgInput} from 'src/components'
- import {DropDown} from 'src/components'
+ import {FormGroupInput as FgInput, DropDown} from 'src/components'
 
-  export default {
-    components: {
+export default {
+   components: {
      FgInput,
      DropDown
-    },
-    computed: {
-      
-    },
-    data () {
-      return {
-     
- 
-      }
-    },
-    methods: {
- 
-      
-    }
-  }
+   },
+   computed: { }
+
+}
 </script>
 <style>
 </style>

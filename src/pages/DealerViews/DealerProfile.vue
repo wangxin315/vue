@@ -16,12 +16,12 @@
 import EditDealerProfileForm from './DealerProfile/EditDealerProfileForm.vue'
 import DealerCard from './DealerProfile/DealerCard.vue'
 
-  export default {
-    components: {
-      EditDealerProfileForm,
-      DealerCard
-    }
+export default {
+  components: {
+    EditDealerProfileForm,
+    DealerCard
   }
+}
 
 </script>
 <style>

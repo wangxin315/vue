@@ -67,7 +67,7 @@ In cursus turpis massa tincidunt. Urna nec tincidunt praesent semper. Vitae elem
 
 <script>
   import AuthLayout from 'src/pages/Dashboard/Pages/AuthLayout.vue'
-  import VueAgile from 'vue-agile'
+  // import VueAgile from 'vue-agile'
   import CarExtendSearch from 'src/pages/GeneralViews/CarExtendSearch.vue'
 
   export default {
@@ -75,8 +75,8 @@ In cursus turpis massa tincidunt. Urna nec tincidunt praesent semper. Vitae elem
       AuthLayout,
       CarExtendSearch
     }
-   
-};
+
+}
 </script>
 <style lang="scss">
 .agile {

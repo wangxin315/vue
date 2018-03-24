@@ -41,29 +41,25 @@
 </template>
 <script>
   import { mapFields } from 'vee-validate'
-  import { Select, Option } from 'element-ui'
+//  import { Select, Option } from 'element-ui'
   import {Checkbox as LCheckbox} from 'src/components'
 
   export default {
     components: {
-      
+  
       LCheckbox
     },
     computed: {
       ...mapFields(['website', 'language', 'bootstrapVersion'])
     },
-     data () {
-        return {
-          unchecked: false,
-          checked: true
-        }
-      
+    data () {
+      return {
+        unchecked: false,
+        checked: true
+      }
     },
-    methods: {
- 
-      
-      
-    }
+
+    methods: { }
   }
 </script>
 <style>

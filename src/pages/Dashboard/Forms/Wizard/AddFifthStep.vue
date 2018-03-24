@@ -22,13 +22,11 @@
     },
     data () {
       return {
-     
- 
+  
       }
     },
     methods: {
- 
-      
+
     }
   }
 </script>

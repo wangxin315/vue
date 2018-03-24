@@ -66,64 +66,63 @@
 </template>
 
 <script>
-import Card from "src/components/Cards/Card.vue";
-import * as firebase from "firebase";
+import Card from 'src/components/Cards/Card.vue'
+import * as firebase from 'firebase'
 
 export default {
   components: {
     Card
   },
-  data() {
+  data () {
     return {
-      email: "",
-      password: "",
-      phone_number: "",
-      verify_code:'',
+      email: '',
+      password: '',
+      phone_number: '',
+      verify_code: '',
       phone_login: false,
       email_login: true
-    };
+    }
   },
   methods: {
-    onSubmit() {
+    onSubmit () {
       const formData = {
         email: this.email,
         password: this.password
-      };
-      console.log(formData);
-      this.$store.dispatch("login", {
+      }
+      console.log(formData)
+      this.$store.dispatch('login', {
         email: formData.email,
         password: formData.password
-      });
+      })
     },
-    onEmailLogin() {
-      this.phone_login = false;
-      this.email_login = true;
+    onEmailLogin () {
+      this.phone_login = false
+      this.email_login = true
     },
-    onPhoneLogin() {
-      this.phone_login = true;
-      this.email_login = false;
+    onPhoneLogin () {
+      this.phone_login = true
+      this.email_login = false
       setTimeout(() => {
         window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
-        "recaptcha-container",
-        {
-          size: "invisible"
-        }
-      );
-      window.recaptchaVerifier.render();
-      }, 100);
-      
+        'recaptcha-container',
+          {
+            size: 'invisible'
+          }
+      )
+        window.recaptchaVerifier.render()
+      }, 100)
     },
-    send_SMS() {
-      this.$store.dispatch("send_SMS", this.phone_number);
+    send_SMS () {
+      this.$store.dispatch('send_SMS', this.phone_number)
     },
-    verifyLoginCode() {
+    verifyLoginCode () {
       this.$store.dispatch('verify_code', this.verify_code)
     },
-    onGoogleLogin() {
-      this.$store.dispatch("google_login");
+    onGoogleLogin () {
+      this.$store.dispatch('google_login')
     }
   }
-};
+}
 </script>
 
 <style scoped>

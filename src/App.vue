@@ -11,8 +11,7 @@
       this.$store.dispatch('tryAutoLogin')
     }
 
-
-  }
+}
 </script>
 <style lang="scss">
   .vue-notifyjs.notifications{

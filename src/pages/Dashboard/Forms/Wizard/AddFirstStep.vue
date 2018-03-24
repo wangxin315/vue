@@ -28,31 +28,31 @@
   </div>
 </template>
 <script>
-const data = require ('src/assets/CarMakeYear.json');
-  export default {
-        data: function() {
-            return {
-                makes: data,
-                selectedMake: "ac",
-                selectedModel: null,
-                selectedYear: null,
-            };
-        },
-        computed: {
-            make: function () {
-              return this.selectedMake;
-            },
-            model: function () {
-                return this.makes[this.selectedMake].models[this.selectedModel].modelName;
-            },
-            year: function () {
-              return this.selectedYear;
-            },
-        },
-        mounted() {
-            console.log(this.makes[this.selectedMake]);
-        }
+const data = require('src/assets/CarMakeYear.json')
+export default {
+  data: function () {
+    return {
+      makes: data,
+      selectedMake: 'ac',
+      selectedModel: null,
+      selectedYear: null
     }
+  },
+  computed: {
+    make: function () {
+      return this.selectedMake
+    },
+    model: function () {
+      return this.makes[this.selectedMake].models[this.selectedModel].modelName
+    },
+    year: function () {
+      return this.selectedYear
+    }
+  },
+  mounted () {
+    console.log(this.makes[this.selectedMake])
+  }
+}
 </script>
 <style>
 </style>

@@ -80,12 +80,12 @@
           this.$sidebar.displaySidebar(false)
         }
       },
-       onLogout() {
+      onLogout () {
         this.$store.dispatch('logout')
-      },
+      }
     },
     computed: {
-         auth () {
+      auth () {
         return this.$store.getters.isAuthenticated
       }
     }

@@ -11,19 +11,17 @@
     </div>
   </div>
 </template>
-<script>
-   import axios from 'axios';
-   
+ <script>
+/*    import axios from 'axios'
   export default {
     email () {
         return !this.$store.getters.user ? false : this.$store.getters.user.email
      console.log(email) },
-    
-    created () {
+         created () {
       this.$store.dispatch('fetchUser')
     }
-    }
-</script>
+    } */
+</script> 
 <style>
 
 </style>
